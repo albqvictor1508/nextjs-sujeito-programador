@@ -9,6 +9,11 @@ type PostProps = {
   posts: Post[]
 }
 
+const handlePosts = async () => {
+  "use server";
+  console.log("CLICANDO...");
+}
+
 const PostsServerSide = async () => {
   const response = await fetch('https://dummyjson.com/posts');
   const data: PostProps = await response.json();
@@ -16,6 +21,7 @@ const PostsServerSide = async () => {
     <div>
       <h1>Post no Client Side</h1>
       <p>teste</p>
+      <button onClick={handlePosts}>Clica</button>
 
       {data.posts.map(post => (
         <div key={post.id}>
